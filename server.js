@@ -1,11 +1,10 @@
 var express = require('express');
-var bodyParser = require('body-parser');
 var server = express();
 
 // Accept raw text for any content-type so tests that send plain strings
 // are captured. If the content-type is JSON, we'll attempt to parse it below.
-server.use(bodyParser.text({ type: '*/*' }));
-server.use(bodyParser.urlencoded({ extended: false }));
+server.use(express.text({ type: '*/*' }));
+server
 
 
 server.post('/', function (req, res) {
