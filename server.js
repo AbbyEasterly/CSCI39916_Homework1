@@ -6,6 +6,7 @@ var server = express();
 // are captured. If the content-type is JSON, we'll attempt to parse it below.
 server.use(bodyParser.text({ type: '*/*' }));
 server.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.text());
 
 
 server.post('/', function (req, res) {
@@ -15,7 +16,7 @@ server.post('/', function (req, res) {
         message = raw;
     } else if (typeof raw === 'object') {
         message = JSON.stringify(raw);
-        
+
     }
     console.log("Received: " + message);
     res.send(message);
